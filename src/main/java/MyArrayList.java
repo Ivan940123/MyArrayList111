@@ -58,7 +58,6 @@ public class MyArrayList {
     public void clearCollection() {
         elements.clone();
     }
-
     public static void main(String[] args) {
         MyArrayList myArrayList = new MyArrayList();
         myArrayList.add("Element 1");
