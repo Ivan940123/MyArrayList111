@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MyArrayList {
     private Object[] elements;
     private int size;
@@ -6,12 +8,14 @@ public class MyArrayList {
         elements = new Object[10];
         size = 0;
     }
+
     /**
      * Adds an element to the end of the ArrayList.
      *
      * @param element the element to add
+     * @param s
      */
-    public void add(Object element) {
+    public void add(Object element, String s) {
         if (size == elements.length) {
             Object[] newElements = new Object[2 * elements.length];
             System.arraycopy(elements, 0, newElements, 0, size);
@@ -20,6 +24,7 @@ public class MyArrayList {
         elements[size] = element;
         size++;
     }
+
     /**
      * Returns the element at the specified index in the ArrayList.
      *
@@ -33,6 +38,7 @@ public class MyArrayList {
         }
         return elements[index];
     }
+
     /**
      * Returns the size of the ArrayList.
      *
@@ -41,6 +47,7 @@ public class MyArrayList {
     public int size() {
         return size;
     }
+
     /**
      * Removes the element at the specified index in the ArrayList.
      *
@@ -55,16 +62,25 @@ public class MyArrayList {
         size--;
     }
 
+    /**
+     * Sorts the elements in the ArrayList in ascending order using the natural order of the elements.
+     */
+    public void sort() {
+        Arrays.sort(elements, 0, size);
+    }
+
     public void clearCollection() {
         elements.clone();
     }
+
     public static void main(String[] args) {
         MyArrayList myArrayList = new MyArrayList();
-        myArrayList.add("Element 1");
-        myArrayList.add("Element 2");
+        myArrayList.add("Element 1", "Element 3");
+        myArrayList.add("Element 2", "Element 3");
         System.out.println(myArrayList.get(0)); // Output: Element 1
         System.out.println(myArrayList.size()); // Output: 2
         myArrayList.remove(0);
         System.out.println(myArrayList.size()); // Output: 1
+        myArrayList.sort();
     }
 }
